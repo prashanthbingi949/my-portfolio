@@ -7,6 +7,7 @@
 <title>Developer Portfolio</title>
 <meta name="description" content="Full Stack Developer Portfolio">
 
+
 <style>
 :root{
   --bg:#000000;
@@ -132,6 +133,19 @@ section{
   transform:translate(-50%,-50%);
 }
 
+.hero-wrapper{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 460px;
+  align-items:center;
+  gap:40px;
+  position:relative;
+  z-index:2;
+}
+
+.hero-content{
+  min-width:0;
+}
+
 .hero-subtitle{
   color:var(--accent);
   letter-spacing:2px;
@@ -165,26 +179,11 @@ section{
   flex-wrap:wrap;
 }
 
-.hero-wrapper{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:60px;
-  position:relative;
-  z-index:2;
-}
-
-.hero-content{
-  flex:1;
-  min-width:0;
-}
-
 .hero-avatar{
-  flex:0 0 460px;
   display:flex;
   justify-content:flex-end;
+  align-items:center;
   perspective:1000px;
-  align-self:center;
 }
 
 .hero-avatar img{
@@ -318,9 +317,27 @@ footer{
 }
 
 @media(max-width:900px){
+
+  html,
+  body{
+    width:100%;
+    min-width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  .container{
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    padding-left:20px;
+    padding-right:20px;
+  }
+
   .grid-2,
   .grid-3{
     grid-template-columns:1fr;
+    gap:18px;
   }
 
   .nav-links{
@@ -328,45 +345,179 @@ footer{
   }
 
   section{
-    padding:90px 0;
+    width:100%;
+    padding:56px 0;
   }
 
   .hero{
+    width:100%;
     padding-top:100px;
-    padding-bottom:10px;
+    padding-bottom:24px;
+  }
+
+  #about{
+    padding-top:40px;
   }
 
   .hero-wrapper{
-    flex-direction:column;
-    align-items:stretch;
-    gap:18px;
+    display:block;
+    width:100%;
+    max-width:100%;
+    position:relative;
   }
 
   .hero-content{
     width:100%;
+    max-width:100%;
+    padding-bottom:150px;
+  }
+
+  .hero-subtitle{
+    font-size:12px;
+    margin-bottom:16px;
+  }
+
+  .hero h1{
+    max-width:100%;
+    font-size:clamp(48px,14vw,72px);
+    line-height:.92;
+    letter-spacing:-1.2px;
+    overflow-wrap:normal;
+  }
+
+  .hero p{
+    max-width:100%;
+    margin-top:22px;
+    font-size:17px;
+    line-height:1.7;
   }
 
   .hero-buttons{
+    width:auto;
     flex-direction:column;
     align-items:flex-start;
-    gap:12px;
-    margin-top:28px;
+    gap:10px;
+    margin-top:26px;
+  }
+
+  /* Mobile: turn the CTA pills into lightweight text links */
+  .hero-buttons .btn{
+    width:auto;
+    padding:0;
+    min-height:44px;
+    background:transparent;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    font-size:16px;
+    font-weight:600;
+    justify-content:flex-start;
+  }
+
+  .hero-buttons .btn-primary{
+    color:var(--accent);
+  }
+
+  .hero-buttons .btn-primary:hover{
+    transform:none;
+    box-shadow:none;
+  }
+
+  .hero-buttons .btn-secondary{
+    color:var(--text);
+  }
+
+  .hero-buttons .btn:hover{
+    transform:translateX(3px);
+    text-decoration:underline;
+    text-underline-offset:4px;
+  }
+
+  .hero-content{
+    padding-bottom:200px;
   }
 
   .hero-avatar{
-    flex:0 0 auto;
-    width:100%;
+    position:absolute;
+    right:18px;
+    bottom:4px;
+    width:195px;
+    max-width:195px;
+    display:flex;
     justify-content:flex-end;
-    margin-top:-10px;
+    align-items:flex-end;
   }
 
   .hero-avatar img{
-    width:210px;
-    max-width:55vw;
+    width:195px;
+    max-width:195px;
+    height:auto;
+  }
+
+  .section-title{
+    font-size:clamp(38px,10vw,52px);
+    line-height:1;
+    margin-bottom:28px;
+  }
+
+  .card{
+    padding:26px;
+    border-radius:26px;
+  }
+
+  .card h3{
+    font-size:24px;
+    line-height:1.2;
+    margin-bottom:12px;
+  }
+
+  .card p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .project-image{
+    height:180px;
+    border-radius:20px;
+    margin-bottom:20px;
+  }
+
+  .tech-stack{
+    gap:10px;
+  }
+
+  .tech{
+    padding:11px 17px;
+  }
+
+  .cta-box{
+    padding:42px 24px;
+    border-radius:28px;
+  }
+
+  .cta-box p{
+    margin:16px auto 28px;
+    line-height:1.7;
+  }
+
+  footer{
+    padding:28px 0;
+  }
+
+  .footer-inner{
+    align-items:flex-start;
+  }
+
+  .footer-links{
+    flex-wrap:wrap;
+    gap:14px;
   }
 }
 </style>
+
 </head>
+
+
 
 <body>
 
@@ -384,6 +535,7 @@ footer{
     <a href="#contact" class="btn btn-primary">Let's Talk</a>
   </div>
 </nav>
+
 
 <section class="hero">
   <div class="glow"></div>
@@ -425,6 +577,7 @@ footer{
 
   </div>
 </section>
+
 
 <section id="about">
   <div class="container">
@@ -600,8 +753,60 @@ reveals.forEach(el => observer.observe(el));
 <script>
 const avatar = document.querySelector('.hero-avatar img');
 
-if(avatar && window.matchMedia('(pointer:fine)').matches){
+if(avatar){
+
   avatar.addEventListener('mousemove',(e)=>{
+
+    const rect = avatar.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 18;
+    const rotateX = ((y / rect.height) - 0.5) * -18;
+
+    avatar.style.transform =
+      `perspective(1000px)
+       rotateX(${rotateX}deg)
+       rotateY(${rotateY}deg)
+       scale(1.04)`;
+  });
+
+  avatar.addEventListener('mouseleave',()=>{
+
+    avatar.style.transform =
+      'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+  });
+}
+</script>
+
+</body>
+</html>
+
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  reveals.forEach(el => observer.observe(el));
+} else {
+  reveals.forEach(el => el.classList.add('show'));
+}
+</script>
+
+<script>
+const avatar = document.querySelector('.hero-avatar img');
+
+if (avatar && window.matchMedia('(pointer:fine)').matches) {
+  avatar.addEventListener('mousemove', (e) => {
     const rect = avatar.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -613,7 +818,7 @@ if(avatar && window.matchMedia('(pointer:fine)').matches){
       `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
   });
 
-  avatar.addEventListener('mouseleave',()=>{
+  avatar.addEventListener('mouseleave', () => {
     avatar.style.transform =
       'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
   });
